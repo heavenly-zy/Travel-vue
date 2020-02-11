@@ -85,6 +85,7 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl'
+@import '~styles/mixins.styl'
 .clearfix::after
   content ''
   display block
@@ -92,7 +93,7 @@ export default {
 .icons >>> .swiper-container
   width 100%
   height 0
-  padding-bottom 80%
+  padding-bottom 50%
 .icon
   position relative
   width 25%
@@ -117,4 +118,5 @@ export default {
     line-height 0.44rem
     color $fontColor
     text-align center
+    ellipsis()
 </style>
