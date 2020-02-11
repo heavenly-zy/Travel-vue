@@ -27,19 +27,19 @@ export default {
       swiperList: [
         {
           id: "01",
-          imgAddr: require("../../../assets/imgs/1.jpg")
+          imgAddr: require("imgs/1.jpg")
         },
         {
           id: "02",
-          imgAddr: require("../../../assets/imgs/2.jpg")
+          imgAddr: require("imgs/2.jpg")
         },
         {
           id: "03",
-          imgAddr: require("../../../assets/imgs/3.jpg")
+          imgAddr: require("imgs/3.jpg")
         },
         {
           id: "04",
-          imgAddr: require("../../../assets/imgs/4.jpg")
+          imgAddr: require("imgs/4.jpg")
         }
       ]
     };
