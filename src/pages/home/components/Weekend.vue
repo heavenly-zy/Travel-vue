@@ -4,7 +4,7 @@
       <span>周末去哪儿</span>
     </div>
     <ul class="recomList">
-      <li class="border-bottom" v-for="item of recommendList" :key="item.id">
+      <li class="border-bottom" v-for="item of list" :key="item.id">
         <div class="item-img-wrapper">
           <img :src="item.imgAddr" />
         </div>
@@ -20,29 +20,8 @@
 <script>
 export default {
   name: "HomeWeekend",
-  data() {
-    return {
-      recommendList: [
-        {
-          id: "01",
-          imgAddr: require("imgs/aa.jpg"),
-          title: "庆隆·易汤南山温泉",
-          intro: "介绍介绍介绍介绍介绍介绍"
-        },
-        {
-          id: "02",
-          imgAddr: require("imgs/bb.jpg"),
-          title: "庆隆·易汤南山温泉",
-          intro: "介绍介绍介绍介绍介绍介绍"
-        },
-        {
-          id: "03",
-          imgAddr: require("imgs/cc.jpg"),
-          title: "庆隆·易汤南山温泉",
-          intro: "介绍介绍介绍介绍介绍介绍"
-        }
-      ]
-    };
+  props: {
+    list: Array
   }
 };
 </script>

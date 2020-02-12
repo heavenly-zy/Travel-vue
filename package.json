@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "fastclick": "^1.0.6",
     "path": "^0.12.7",
@@ -47,9 +48,18 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "quotes": [0, "double"],
-      "semi": [0, "always"],
-      "space-before-function-paren": [0, "always"]
+      "quotes": [
+        0,
+        "double"
+      ],
+      "semi": [
+        0,
+        "always"
+      ],
+      "space-before-function-paren": [
+        0,
+        "always"
+      ]
     }
   },
   "browserslist": [

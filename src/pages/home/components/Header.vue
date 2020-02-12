@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="header-right">
-      <span>城市</span>
+      <span>{{city}}</span>
       <svg class="icon jiantou">
         <use xlink:href="#icon-jiantou" />
       </svg>
@@ -24,12 +24,17 @@
 
 <script>
 export default {
-  name: "HomeHeader"
+  name: "HomeHeader",
+  props: {
+    city: {
+      type: String
+    }
+  }
 };
 </script>
 
 <style lang="stylus" scoped>
-@import '~styles/varibles.styl'; // 注意CSS要在前面加"~"符号
+@import '~styles/varibles.styl' // 注意CSS要在前面加"~"符号
 .header
   display flex
   height 0.86rem

@@ -17,66 +17,22 @@
 <script>
 export default {
   name: "HomeIcons",
+  props: {
+    list: Array
+  },
   data() {
     return {
       swiperOption: {
         pagination: {
           el: ".swiper-pagination"
         }
-      },
-      iconList: [
-        {
-          id: "01",
-          imgAddr: require("imgs/a.png"),
-          name: "景点门票"
-        },
-        {
-          id: "02",
-          imgAddr: require("imgs/b.png"),
-          name: "泡温泉"
-        },
-        {
-          id: "03",
-          imgAddr: require("imgs/c.png"),
-          name: "一日游"
-        },
-        {
-          id: "04",
-          imgAddr: require("imgs/d.png"),
-          name: "两江夜游"
-        },
-        {
-          id: "05",
-          imgAddr: require("imgs/e.png"),
-          name: "精品小团"
-        },
-        {
-          id: "06",
-          imgAddr: require("imgs/f.png"),
-          name: "神秘武隆"
-        },
-        {
-          id: "07",
-          imgAddr: require("imgs/g.png"),
-          name: "重庆欢乐谷"
-        },
-        {
-          id: "08",
-          imgAddr: require("imgs/h.png"),
-          name: "重庆动物园"
-        },
-        {
-          id: "09",
-          imgAddr: require("imgs/i.png"),
-          name: "黑山谷"
-        }
-      ]
+      }
     };
   },
   computed: {
     pages() {
       const pages = [];
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8);
         if (!pages[page]) {
           pages[page] = [];
