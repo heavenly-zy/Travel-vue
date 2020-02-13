@@ -13,12 +13,14 @@
         <span>输入城市/景点/游玩主题</span>
       </div>
     </div>
-    <div class="header-right">
-      <span>{{city}}</span>
-      <svg class="icon jiantou">
-        <use xlink:href="#icon-jiantou" />
-      </svg>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        <span>{{city}}</span>
+        <svg class="icon jiantou">
+          <use xlink:href="#icon-jiantou" />
+        </svg>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -34,11 +36,11 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '~styles/varibles.styl' // 注意CSS要在前面加"~"符号
+@import '~styles/varibles.styl'; // 注意CSS要在前面加"~"符号
 .header
   display flex
-  height 0.86rem
-  line-height 0.86rem
+  height $headerHeight
+  line-height $headerHeight
   background $bgColor
   color #fff
   .header-left
@@ -64,7 +66,8 @@ export default {
     justify-content center
     align-items center
     width 1.24rem
+    color #fff
     .icon.jiantou
-      width 1.2em
-      height 1.2em
+      width 1em
+      height 1em
 </style>
