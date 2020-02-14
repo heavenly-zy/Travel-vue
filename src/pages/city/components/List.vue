@@ -19,7 +19,7 @@
         </div>
       </section>
 
-      <section v-for="(item,key) of cities" :key="key">
+      <section v-for="(item,key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
         <ul class="item-list">
           <li
@@ -43,6 +43,10 @@ export default {
   },
   mounted() {
     this.scroll = new BScroll(this.$refs.wrapper);
+    this.bus.$on("change", letter => {
+      const element = this.$refs[letter][0];
+      this.scroll.scrollToElement(element);
+    });
   }
 };
 </script>

@@ -1,6 +1,15 @@
 <template>
   <ul class="list">
-    <li class="item" v-for="(item,key) of cities" :key="key">{{key}}</li>
+    <li
+      class="item"
+      v-for="item of letters"
+      :key="item"
+      :ref="item"
+      @click="letterClick"
+      @touchstart="touchStart"
+      @touchmove="touchMove"
+      @touchend="touchEnd"
+    >{{item}}</li>
   </ul>
 </template>
 
@@ -9,6 +18,40 @@ export default {
   name: "CityAlphabet",
   props: {
     cities: Object
+  },
+  data() {
+    return {
+      touchStatus: false
+    };
+  },
+  computed: {
+    letters() {
+      const letters = Object.keys(this.cities);
+      return letters; // ['A','B','C',...]
+    }
+  },
+  methods: {
+    letterClick(e) {
+      this.bus.$emit("change", e.target.innerText);
+    },
+    touchStart() {
+      this.touchStatus = true;
+    },
+    touchMove(e) {
+      if (this.touchStatus) {
+        const startY = this.$refs.A[0].getBoundingClientRect().top; // 'A' 距离屏幕顶部的距离
+        const touchY = e.touches[0].clientY; // 滑动元素距离屏幕顶部的距离
+        const index = Math.floor(
+          (touchY - startY) / this.$refs.A[0].offsetHeight
+        );
+        if (index >= 0 && index < this.letters.length) { // 控制 index === 0~21
+          this.bus.$emit("change", this.letters[index]);
+        }
+      }
+    },
+    touchEnd() {
+      this.touchStatus = false;
+    }
   }
 };
 </script>
