@@ -21,8 +21,14 @@ export default {
   },
   data() {
     return {
-      touchStatus: false
+      touchStatus: false,
+      startY: 0,
+      timer: null
     };
+  },
+  updated() {
+    // data变化时触发(cities请求到数据，变为非空)updated
+    this.startY = this.$refs.A[0].getBoundingClientRect().top; // 'A' 距离屏幕顶部的距离
   },
   computed: {
     letters() {
@@ -39,14 +45,17 @@ export default {
     },
     touchMove(e) {
       if (this.touchStatus) {
-        const startY = this.$refs.A[0].getBoundingClientRect().top; // 'A' 距离屏幕顶部的距离
-        const touchY = e.touches[0].clientY; // 滑动元素距离屏幕顶部的距离
-        const index = Math.floor(
-          (touchY - startY) / this.$refs.A[0].offsetHeight
-        );
-        if (index >= 0 && index < this.letters.length) { // 控制 index === 0~21
-          this.bus.$emit("change", this.letters[index]);
-        }
+        if (this.timer) clearTimeout(this.timer); // 函数节流
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY; // 滑动元素距离屏幕顶部的距离
+          const index = Math.floor(
+            (touchY - this.startY) / this.$refs.A[0].offsetHeight
+          );
+          if (index >= 0 && index < this.letters.length) {
+            // 控制 index === 0~21
+            this.bus.$emit("change", this.letters[index]);
+          }
+        }, 16);
       }
     },
     touchEnd() {
