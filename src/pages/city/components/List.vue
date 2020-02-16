@@ -13,7 +13,12 @@
       <section>
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list clearfix">
-          <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
+          <div
+            class="button-wrapper"
+            v-for="item of hotCities"
+            :key="item.id"
+            @click="cityClick(item.name)"
+          >
             <button>{{item.name}}</button>
           </div>
         </div>
@@ -47,6 +52,11 @@ export default {
       const element = this.$refs[letter][0];
       this.scroll.scrollToElement(element);
     });
+  },
+  methods: {
+    cityClick(city) {
+      this.$store.dispatch("changeCity", city);
+    }
   }
 };
 </script>
