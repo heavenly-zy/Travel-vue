@@ -15,7 +15,7 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
-        <span>{{city}}</span>
+        <span>{{this.$store.state.city}}</span>
         <svg class="icon jiantou">
           <use xlink:href="#icon-jiantou" />
         </svg>
@@ -26,12 +26,7 @@
 
 <script>
 export default {
-  name: "HomeHeader",
-  props: {
-    city: {
-      type: String
-    }
-  }
+  name: "HomeHeader"
 };
 </script>
 

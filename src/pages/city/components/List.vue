@@ -5,7 +5,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list clearfix">
           <div class="button-wrapper">
-            <button>北京</button>
+            <button>{{this.$store.state.city}}</button>
           </div>
         </div>
       </section>
