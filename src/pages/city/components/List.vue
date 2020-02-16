@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     cityClick(city) {
-      this.$store.dispatch("changeCity", city);
+      this.$store.commit("changeCity", city);
     }
   }
 };
