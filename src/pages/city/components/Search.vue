@@ -5,7 +5,12 @@
     </div>
     <div class="search-content" ref="search" v-show="keyword">
       <ul>
-        <li class="border-bottom" v-for="item of list" :key="item.id">{{item.name}}</li>
+        <li
+          class="border-bottom"
+          v-for="item of list"
+          :key="item.id"
+          @click="cityClick(item.name)"
+        >{{item.name}}</li>
         <li v-show="hasNoData">找不到你想去的城市呢（｡ò ∀ ó｡）</li>
       </ul>
     </div>
@@ -49,6 +54,11 @@ export default {
   },
   mounted() {
     this.scroll = new BScroll(this.$refs.search);
+  },
+  methods: {
+    cityClick(city) {
+      this.$store.commit("changeCity", city);
+    }
   }
 };
 </script>

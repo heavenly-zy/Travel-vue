@@ -31,6 +31,7 @@
             class="item border-bottom"
             v-for="innerItem of item"
             :key="innerItem.id"
+            @click="cityClick(innerItem.name)"
           >{{innerItem.name}}</li>
         </ul>
       </section>
