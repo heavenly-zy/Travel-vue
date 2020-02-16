@@ -15,7 +15,7 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
-        <span>{{this.$store.state.city}}</span>
+        <span>{{city}}</span>
         <svg class="icon jiantou">
           <use xlink:href="#icon-jiantou" />
         </svg>
@@ -25,13 +25,17 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-  name: "HomeHeader"
+  name: "HomeHeader",
+  computed: {
+    ...mapState(["city"]) // 映射计算属性 this.city 为 store.state.city
+  }
 };
 </script>
 
 <style lang="stylus" scoped>
-@import '~styles/varibles.styl'; // 注意CSS要在前面加"~"符号
+@import '~styles/varibles.styl' // 注意CSS要在前面加"~"符号
 .header
   display flex
   height $headerHeight
