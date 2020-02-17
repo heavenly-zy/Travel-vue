@@ -5,14 +5,20 @@
       <span>猜你喜欢</span>
     </div>
     <ul class="recomList">
-      <li class="border-bottom" v-for="item of list" :key="item.id">
+      <router-link
+        tag="li"
+        class="border-bottom"
+        v-for="item of list"
+        :key="item.id"
+        :to="`/detail/${item.id}`"
+      >
         <img :src="item.imgAddr" />
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
           <p class="item-intro">{{item.intro}}</p>
           <button>查看详情</button>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
