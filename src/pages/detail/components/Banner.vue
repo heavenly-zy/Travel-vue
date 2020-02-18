@@ -55,7 +55,7 @@ export default {
   bottom 0
   width 100%
   height 0.3rem
-  background-image linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8))
+  background-image linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8))
 .banner
   position relative
   overflow hidden

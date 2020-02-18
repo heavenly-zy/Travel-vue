@@ -58,6 +58,7 @@ export default {
   background #000
   display flex
   align-items center
+  z-index 99
   .wrapper
     width 100%
     height auto

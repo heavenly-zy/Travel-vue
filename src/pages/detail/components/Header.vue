@@ -44,6 +44,7 @@ export default {
     window.addEventListener("scroll", this.handleScroll);
   },
   deactivated() {
+    console.log('deactivated')
     window.removeEventListener("scroll", this.handleScroll);
   }
 };
@@ -76,6 +77,7 @@ export default {
   color #fff
   background $bgColor
   font-size 0.32rem
+  z-index 1
   .icon.fixed.return
     font-size 0.25rem
     position absolute
