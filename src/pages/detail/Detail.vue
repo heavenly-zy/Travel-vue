@@ -1,8 +1,9 @@
 <template>
   <div>
-    <detail-banner></detail-banner>
+    <detail-banner :sightName="sightName" :bannerImg="bannerImg" :gallaryImgs="gallaryImgs"></detail-banner>
     <detail-header></detail-header>
-    <detail-list :list="list"></detail-list>
+    <detail-list :list="categoryList"></detail-list>
+    <div class="content"></div>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import DetailBanner from "./components/Banner.vue";
 import DetailHeader from "./components/Header.vue";
 import DetailList from "./components/List.vue";
+import axios from "axios";
 export default {
   name: "Detail",
   components: {
@@ -19,30 +21,48 @@ export default {
   },
   data() {
     return {
-      list: [
-        {
-          title: "成人票",
-          children: [
-            {
-              title: "成人三馆联票",
-              children: [{ title: "成人三馆联票 --- 分店" }]
-            },
-            { title: "成人五馆联票" }
-          ]
-        },
-        {
-          title: "学生票"
-        },
-        {
-          title: "儿童票"
-        },
-        {
-          title: "特惠票"
-        }
-      ]
+      sightName: "",
+      bannerImg: "",
+      gallaryImgs: [],
+      categoryList: [],
+      lastId: undefined
     };
+  },
+  methods: {
+    getDetailInfo() {
+      axios
+        .get("/api/detail.json", {
+          params: {
+            id: this.$route.params.id
+          }
+        })
+        .then(this.getDetailInfoSuccss);
+    },
+    getDetailInfoSuccss(response) {
+      const res = response.data;
+      const data = res.data;
+      if (res.ret && res.data) {
+        this.sightName = data.sightName;
+        this.bannerImg = data.bannerImg;
+        this.gallaryImgs = data.gallaryImgs;
+        this.categoryList = data.categoryList;
+      }
+    }
+  },
+  mounted() {
+    this.getDetailInfo();
+    this.lastId = this.$route.params.id;
+  },
+  activated() {
+    if (this.$route.params.id !== this.lastId) {
+      this.getDetailInfo();
+      this.lastId = this.$route.params.id
+    }
   }
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+.content
+  height 50rem
+</style>

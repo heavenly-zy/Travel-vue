@@ -1,22 +1,20 @@
 <template>
   <div>
     <div class="banner" @click="handleBannerClick">
-      <img
-        src="http://img1.qunarzz.com/sight/p0/1812/9d/9d03c608dfe15a2aa3.img.jpg_600x330_6957db71.jpg"
-      />
+      <img :src="bannerImg" />
       <div class="banner-info">
-        <div class="banner-title">桐花湾美人谷游乐园</div>
+        <div class="banner-title">{{sightName}}</div>
         <div class="banner-number-wrapper">
           <div class="banner-number">
             <svg class="icon">
               <use xlink:href="#icon-img" />
             </svg>
-            <span>7</span>
+            <span>{{gallaryImgs.length}}</span>
           </div>
         </div>
       </div>
     </div>
-    <common-gallary :imgList="imgList" @closeGallary="handleGallaryClose" v-show="showGallary"></common-gallary>
+    <common-gallary :imgList="gallaryImgs" @closeGallary="handleGallaryClose" v-show="showGallary"></common-gallary>
   </div>
 </template>
 
@@ -27,12 +25,13 @@ export default {
   components: {
     CommonGallary
   },
+  props: {
+    sightName: String,
+    bannerImg: String,
+    gallaryImgs: Array
+  },
   data() {
     return {
-      imgList: [
-        "http://img1.qunarzz.com/sight/p0/1803/b9/b967924f39891022a3.img.jpg_r_800x800_6f9e2624.jpg",
-        "http://img1.qunarzz.com/sight/p0/1803/57/5734f99e952d78c6a3.img.jpg_r_800x800_71a3cbb4.jpg"
-      ],
       showGallary: false
     };
   },

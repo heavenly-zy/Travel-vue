@@ -2,7 +2,8 @@
   <div>
     <div class="container" @click="handleGallaryClick">
       <div class="wrapper">
-        <swiper :options="swiperOption">
+        <!-- 加v-if="imgList.length"这一句是为了解决loop失效的bug -->
+        <swiper v-if="imgList.length" :options="swiperOption">
           <swiper-slide v-for="(img,index) of imgList" :key="index">
             <img :src="img" />
           </swiper-slide>
