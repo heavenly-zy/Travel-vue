@@ -82,7 +82,7 @@
     ( ) E2E Testing // e2e（end to end） 测试
    ```
    最终项目搭建成功，初始结构如下
-   ![项目结构](https://upload-images.jianshu.io/upload_images/18574809-c8a1612b0e2eb56d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+   ![项目结构](https://ftp.bmp.ovh/imgs/2020/02/59a2eb1fabc74c0c.png)
    [浅谈vue中index.html、main.js、App.vue、index.js之前的关系以及加载过程](https://blog.csdn.net/qq_34182808/article/details/86690193)
 
 # 二、项目初始化
@@ -385,7 +385,7 @@ flex布局下文本溢出省略号不起作用
 
    > 注意：放在`public`目录下的静态资源可直接通过(http://localhost:8080/ + 文件名称)来访问，不需要在前面加一个`/public`路径（别问，问就是有被坑到）
 
-   ![示例](https://upload-images.jianshu.io/upload_images/18574809-ebc6fa17644ec335.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+   ![示例](https://ftp.bmp.ovh/imgs/2020/02/3d68b310a2d6f88c.png)
 
    - 然后在`vue.config.js`中设置 devServer.proxy 请求转发
       ```
@@ -544,7 +544,7 @@ export default {
 
 > 需求：我们希望通过点击或滑动 City 组件中右侧的字母表，让左侧城市列表自动跳转到对应字母的区域
 
-![](https://upload-images.jianshu.io/upload_images/18574809-0391f7a3cbf2e3d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://ftp.bmp.ovh/imgs/2020/02/4574fedf73ad28f2.png)
 
 这里我使用 bus 来让 Alphabet 组件和 List 组件进行通信（当然也可以让 Alphabet 组件把数据传递给 City 组件，再由 City 组件传递给 List 组件）
 
@@ -564,7 +564,7 @@ this.bus.$on("change", letter => {
 
 滑动跳转稍微复杂一点
 
-![](https://upload-images.jianshu.io/upload_images/18574809-a753aa1ace51b9b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://ftp.bmp.ovh/imgs/2020/02/50e5dc95740b95d0.png)
 
 用上图中的`touchY`减去`startY`，再除以单个字母的高度(`offsetHeight`)，就得到当前手指滑的字母下标`index`，然后将下标转换为对应的字母，同样也用`$emit`发送给兄弟组件。
 
@@ -792,7 +792,7 @@ export default {
 
 vuex状态管理的流程
 
-![vue实例(组件)==>actions==>mutations==>state==­>vue实例(组件)](https://upload-images.jianshu.io/upload_images/18574809-648205737a4c8b8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![vue实例(组件)==>actions==>mutations==>state==­>vue实例(组件)](https://ftp.bmp.ovh/imgs/2020/02/8c265e56d4c45f27.png)
 
 具体代码如下：
 store/index.js
@@ -876,7 +876,7 @@ vuex使用的注意点：
 
 注意：在 Vue 实例内部，你可以通过`$router`访问路由实例。因此你可以调用`this.$router.push`
 
-# 用 localstorage 解决 vuex 刷新数据消失问题
+## 用 localstorage 解决 vuex 刷新数据消失问题
 
 > 问题：vuex 的数据是存储在浏览器维护的内存中，页面刷新会重新初始化，简单的说，就是一刷新数据就重置了。
 
@@ -964,7 +964,7 @@ mounted() { // 每次跳转页面导致实例重新被挂载，mounted在实例�
   this.getCityInfo();
 }
 ```
-![重复请求相同数据](https://upload-images.jianshu.io/upload_images/18574809-f6394d880f67782a.gif?imageMogr2/auto-orient/strip)
+![重复请求相同数据](https://b2.bmp.ovh/imgs/2020/02/9e5c0344e134a134.gif)
 
 这实际上是非常耗费性能的，而我们希望数据只在开始的时候被请求一次，该如何优化呢？
 
@@ -977,7 +977,7 @@ mounted() { // 每次跳转页面导致实例重新被挂载，mounted在实例�
 ```
 这里将App.vue中最顶层的出口`<router-view>`用`<keep-alive>`包裹起来，让整个应用都使用`<keep-alive>`的缓存机制：路由中的内容被加载一次后就被缓存起来，下一次再次进入该路由时不需要重新渲染该组件，直接读取缓存中的内容，也就不会重复请求了。
 
-![只请求一次数据](https://upload-images.jianshu.io/upload_images/18574809-3b2d1066130a3639.gif?imageMogr2/auto-orient/strip)
+![只请求一次数据](https://ftp.bmp.ovh/imgs/2020/02/878c9465ea262e48.gif)
 
 但是这样永远只在最开始请求一次也是不正确的，因为如果我们点击city中的城市列表，city 的值不同，理所应当发的请求也应该不同
 
@@ -1027,7 +1027,7 @@ activated() { // Home组件激活(回到home主页)时调用
   }
 }
 ```
-![city值不同才会发起请求](https://upload-images.jianshu.io/upload_images/18574809-c812ac01a954ff86.gif?imageMogr2/auto-orient/strip)
+![city值不同才会发起请求](https://ftp.bmp.ovh/imgs/2020/02/b372119b9e5f2d1c.gif)
 
 小结：通常情况下每次刷新（或重新进入）页面都会触发`mounted`钩子，`<keep-alive>`的作用实际上就是让`mounted`钩子只在最开始触发一次，后续都不再触发，将数据**缓存**起来了。而每次组件激活/停用都会触发它自己的`activated`和`deactivated`钩子。
 
@@ -1070,7 +1070,7 @@ methods: {
 })
 ```
 
-![进入detail页只发一次请求](https://upload-images.jianshu.io/upload_images/18574809-96b2a912c04d1197.gif?imageMogr2/auto-orient/strip)
+![进入detail页只发一次请求](https://ftp.bmp.ovh/imgs/2020/02/ab6dfedeffe2cdfa.gif)
 
 我们希望点击不同的 recommendList 会发送不同的请求
 
@@ -1096,7 +1096,7 @@ activated() { // 每次组件被激活就调用
   <router-view />
 </keep-alive>
 ```
-![点击不同的recommendList项会发不同的请求](https://upload-images.jianshu.io/upload_images/18574809-0b0ed9ed3ccd41ab.gif?imageMogr2/auto-orient/strip)
+![点击不同的recommendList项会发不同的请求](https://ftp.bmp.ovh/imgs/2020/02/86cc6d85749c99e5.gif)
 
 > 解决页面切换滚动的bug（home页滚动导致detail页滚动，detail页滚动导致home页滚动）
 
