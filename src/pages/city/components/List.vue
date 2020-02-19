@@ -49,7 +49,11 @@ export default {
     hotCities: Array
   },
   mounted() {
-    this.scroll = new BScroll(this.$refs.wrapper);
+    this.scroll = new BScroll(this.$refs.wrapper, {
+      mouseWheel: true,
+      click: true,
+      tap: true
+    });
     this.bus.$on("change", letter => {
       const element = this.$refs[letter][0];
       this.scroll.scrollToElement(element);

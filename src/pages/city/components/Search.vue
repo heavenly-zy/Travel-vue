@@ -54,7 +54,11 @@ export default {
     }
   },
   mounted() {
-    this.scroll = new BScroll(this.$refs.search);
+    this.scroll = new BScroll(this.$refs.search, {
+      mouseWheel: true,
+      click: true,
+      tap: true
+    });
   },
   methods: {
     cityClick(city) {

@@ -8,7 +8,6 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src'))
       .set('styles', resolve('src/assets/styles'))
-      .set('imgs', resolve('src/assets/imgs'))
       .set('common', resolve('src/common'))
   },
   devServer: {
@@ -22,5 +21,8 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/travel-vue/'
+    : '/'
 }

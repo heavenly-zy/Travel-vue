@@ -6,7 +6,7 @@
       :key="item"
       :ref="item"
       @click="letterClick"
-      @touchstart="touchStart"
+      @touchstart.prevent="touchStart"
       @touchmove="touchMove"
       @touchend="touchEnd"
     >{{item}}</li>
@@ -70,7 +70,7 @@ export default {
 .list
   position absolute
   top 1.73rem
-  right 0
+  right 0.1rem
   bottom 0
   width 0.4rem
   display flex
