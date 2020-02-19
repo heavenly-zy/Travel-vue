@@ -2,7 +2,7 @@
   <div>
     <detail-banner :sightName="sightName" :bannerImg="bannerImg" :gallaryImgs="gallaryImgs"></detail-banner>
     <detail-header></detail-header>
-    <detail-list :list="categoryList"></detail-list>
+    <detail-list :list="categoryList" v-show="showList"></detail-list>
     <div class="content"></div>
   </div>
 </template>
@@ -25,7 +25,8 @@ export default {
       bannerImg: "",
       gallaryImgs: [],
       categoryList: [],
-      lastId: undefined
+      lastId: undefined,
+      showList: true
     };
   },
   methods: {
@@ -52,11 +53,17 @@ export default {
   mounted() {
     this.getDetailInfo();
     this.lastId = this.$route.params.id;
+    this.bus.$on("closeList", () => {
+      this.showList = false;
+    });
+    this.bus.$on("openList", () => {
+      this.showList = true;
+    });
   },
   activated() {
     if (this.$route.params.id !== this.lastId) {
       this.getDetailInfo();
-      this.lastId = this.$route.params.id
+      this.lastId = this.$route.params.id;
     }
   }
 };

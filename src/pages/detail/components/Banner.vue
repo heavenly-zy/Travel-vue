@@ -14,16 +14,24 @@
         </div>
       </div>
     </div>
-    <common-gallary :imgList="gallaryImgs" @closeGallary="handleGallaryClose" v-show="showGallary"></common-gallary>
+    <fade-animation>
+      <common-gallary
+        :imgList="gallaryImgs"
+        @closeGallary="handleGallaryClose"
+        v-show="showGallary"
+      ></common-gallary>
+    </fade-animation>
   </div>
 </template>
 
 <script>
 import CommonGallary from "common/gallary/Gallary.vue";
+import FadeAnimation from "common/animation/fadeAnimation.vue";
 export default {
   name: "DetailBanner",
   components: {
-    CommonGallary
+    CommonGallary,
+    FadeAnimation
   },
   props: {
     sightName: String,
@@ -38,9 +46,11 @@ export default {
   methods: {
     handleBannerClick() {
       this.showGallary = true;
+      this.bus.$emit("closeList"); // 点击 banner 关掉 list
     },
     handleGallaryClose() {
       this.showGallary = false;
+      this.showGallary || this.bus.$emit("openList"); // gallary 关闭之后才会打开 list
     }
   }
 };
