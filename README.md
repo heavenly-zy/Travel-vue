@@ -2,9 +2,14 @@
 > 以下主要是我对项目开发中整体流程与细节的记录
 
 # 效果
+## 首页
 ![home](https://ftp.bmp.ovh/imgs/2020/02/f5d083f03b9ca3fd.gif)
+
+## 城市页
 ![city](https://ftp.bmp.ovh/imgs/2020/02/67d9ab39043918aa.gif)
-![detail](https://ftp.bmp.ovh/imgs/2020/02/bcca2c62c542e246.gif)
+
+## 详情页
+![detail](https://ftp.bmp.ovh/imgs/2020/02/c90c4413181289a1.gif)
 
 # 开发
 1. 克隆项目到本地
