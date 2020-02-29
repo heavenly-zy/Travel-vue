@@ -1,6 +1,13 @@
 # travel-vue(旅游网页单页 Vue 项目)
 > 以下主要是我对项目开发中整体流程与细节的记录
 
+# 效果
+- Home页
+   ![](https://ftp.bmp.ovh/imgs/2020/02/f5d083f03b9ca3fd.gif)
+- City页
+   ![](https://ftp.bmp.ovh/imgs/2020/02/67d9ab39043918aa.gif)
+- Detail页
+   ![](https://ftp.bmp.ovh/imgs/2020/02/bcca2c62c542e246.gif)
 # 开发
 1. 克隆项目到本地
    ```sh
